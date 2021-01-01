@@ -9,19 +9,22 @@ import ForgotPassword from "./component/forgot-password";
 import UpdateProfile from "./component/update-profile";
 import Frontend from './layout/frontend'
 import style from './utils/global.css'
+// import MyBooks from "./component/books";
+import BookDetail from "./component/book-detail";
 
 
 function App() {
   return (
     <Router>
     <Frontend>
-    <div className="justify-content-center mx-0 my-0" style={{minHeight: "100vh"}}>
-      <div className="mt-5 mb-5" >
+    <div className="justify-content-center mx-0 " style={{minHeight: "100vh"}}>
+      <div className=" mb-5" >
      
     <AuthProvider>
      <Switch>
      <PrivateRoute exact path="/" component={DashBoard} />
      <PrivateRoute path="/update-profile" component={UpdateProfile} />
+       <Route path="/books/:booksID/id" component={BookDetail}/>
        <Route path="/signup" component={SignUp} />
        <Route path="/login" component={Login} />
        <Route path="/forgot-password" component={ForgotPassword} />
