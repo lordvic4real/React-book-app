@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import User from "./user";
+import { Link } from "react-router-dom";
+import {} from "react-bootstrap";
+// import User from "./user";
 
 const NavContainer = styled.div`
   min-height: 60px;
