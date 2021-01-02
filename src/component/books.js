@@ -88,7 +88,7 @@ const GridContainer = styled.div`
   }
 `;
 
-export default function MyBooks({ BookDetail }) {
+export default function MyBooks(props) {
   const [books, setBooks] = useState([
     {
       title: "",
@@ -98,8 +98,8 @@ export default function MyBooks({ BookDetail }) {
   ]);
 
   useEffect(() => {
-    const effectBooks = Books.map((book) => book);
-    setBooks(effectBooks);
+    const BookDetail = Books.map((book) => book);
+    setBooks(BookDetail);
   }, []);
 
   return (
@@ -108,7 +108,7 @@ export default function MyBooks({ BookDetail }) {
         {Books.map((book) => (
           <div className="card shadow-sm" key={book.id}>
             <div className="card-body">
-              <Link to={`books/:bookID/${book.id}`}>
+              <Link to={`books/:bookID/book-detail${book.id}`}>
                 <div className="img-container">
                   <img src={book.image} />
                 </div>

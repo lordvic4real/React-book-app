@@ -17,7 +17,7 @@ export default function BookDetail() {
   useEffect(() => {
     const booksFilter = Books.map((book) => book.id);
     setFilterBooks(getBookById(booksFilter));
-  }, [Books.id]);
+  }, []);
 
   function getBookById(bookId) {
     const bookById = `/books/book-detail/:bookID/${Books.id}`;
