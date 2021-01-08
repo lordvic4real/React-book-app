@@ -8,8 +8,7 @@ import styled from "styled-components";
 const BannerContainer = styled.div`
   height: 320px;
   margin-top: 0;
-  background: linear-gradient(rgba(1, 48, 77, 0.889), rgba(1, 48, 77, 0.889)),
-    url(images/images13.jpg);
+  background: linear-gradient(rgba(1, 48, 77, 0.889), rgba(1, 48, 77, 0.689));
   background-position: center;
   background-size: cover;
   object-fit: cover;
@@ -102,9 +101,7 @@ export default function DashBoard(props) {
     <>
       <div
         style={{
-          background: `linear-gradient(rgba(1,48,77,0.889),rgba(1,48,77,0.889)),url(images/images13.jpg) no-repeat`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
+          background: `linear-gradient(rgba(1,48,77,0.889),rgba(1,48,77,0.889))`,
         }}
       >
         <div className="d-flex justify-content-between align-items-center px-2 text-light">

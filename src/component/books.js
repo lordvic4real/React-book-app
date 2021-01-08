@@ -108,7 +108,7 @@ export default function MyBooks(props) {
         {Books.map((book) => (
           <div className="card shadow-sm" key={book.id}>
             <div className="card-body">
-              <Link to={`books/:bookID/book-detail${book.id}`}>
+              <Link to={`books/:${book.id + 1}`}>
                 <div className="img-container">
                   <img src={book.image} />
                 </div>

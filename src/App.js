@@ -9,8 +9,9 @@ import ForgotPassword from "./component/forgot-password";
 import UpdateProfile from "./component/update-profile";
 import Frontend from "./layout/frontend";
 // import style from './utils/global.css'
-// import MyBooks from "./component/books";
+import Person from "./component/person";
 import BookDetail from "./component/book-detail";
+import People from "./component/people";
 
 function App() {
   return (
@@ -24,11 +25,13 @@ function App() {
             <AuthProvider>
               <Switch>
                 <PrivateRoute exact path="/" component={DashBoard} />
+                <PrivateRoute path="/people" component={People} />
+                <Route path="/person/:personId" component={Person} />
                 <PrivateRoute
                   path="/update-profile"
                   component={UpdateProfile}
                 />
-                <Route path="/books/:booksID/" component={BookDetail} />
+                <Route path="/books/:id/" component={BookDetail} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot-password" component={ForgotPassword} />

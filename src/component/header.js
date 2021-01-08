@@ -12,6 +12,7 @@ const NavContainer = styled.div`
   grid-template-columns: 1fr 2fr;
   place-items: center;
   padding: 0 0 0 5%;
+  border-bottom: 3px solid grey;
   .logo {
     font-size: 22px;
     font-family: muli;
@@ -38,7 +39,7 @@ export default function Header(props) {
         </div>
         <nav className="link">
           <Link to="/">Home</Link>
-          <Link to="/">About</Link>
+          <Link to="/people">People</Link>
           <Link to="/">Services</Link>
         </nav>
       </NavContainer>

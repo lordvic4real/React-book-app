@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   height: 100px;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(4, 4, 4, 0.8));
+  background: linear-gradient(rgba(3, 37, 65, 0.99), rgba(3, 38, 66, 0.99999));
   display: grid;
   place-items: center;
   color: #fff;
