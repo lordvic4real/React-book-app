@@ -12,6 +12,7 @@ import Frontend from "./layout/frontend";
 import Person from "./component/person";
 import BookDetail from "./component/book-detail";
 import People from "./component/people";
+import GoogleBook from "./component/google-books/google-book";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
                   path="/update-profile"
                   component={UpdateProfile}
                 />
-                <Route path="/books/:id/" component={BookDetail} />
+                <Route path="/google-book" component={GoogleBook} />
+                <Route path="/books/:id" component={BookDetail} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot-password" component={ForgotPassword} />
