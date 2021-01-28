@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Books } from "../data/books";
-import BookDetail from "./book-detail";
 import { Link } from "react-router-dom";
+// import { search } from "./dashboard";
 
 export default function MyBook({ book }) {
   return (

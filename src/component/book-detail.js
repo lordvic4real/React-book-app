@@ -26,8 +26,7 @@ export default function BookDetail({ match }) {
       // console.log(getBook);
       // console.log(response);
       const bookInfo = response.volumeInfo;
-      console.log(bookInfo);
-
+      // console.log(bookInfo);
       setBookData(bookInfo);
     } catch (error) {
       console.log(error);
@@ -42,9 +41,8 @@ export default function BookDetail({ match }) {
     <>
       <DetailContainer>
         <div>
-          {/* <img src={book.volumeInfo.image} /> */}
           <div>{bookData.title}</div>
-          <img src={bookData.imageLinks?.thumbnail} />
+          <img src={bookData.imageLinks?.smallthumbnail} />
           <div>{bookData.description}</div>
         </div>
       </DetailContainer>

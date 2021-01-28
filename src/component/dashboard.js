@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../context/authcontext";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import BookCard from "./book";
 import styled from "styled-components";
 import axios from "axios";
@@ -27,40 +27,7 @@ const BannerContainer = styled.div`
     text-transform: capitalize;
     font-family: muli;
   }
-  input {
-    width: 700px;
-    height: 46px;
-    line-height: 46px;
-    font-size: 1.1em;
-    color: rgba(0, 0, 0, 0.5);
-    border: none;
-    border-radius: 30px;
-    padding: 10px 20px;
-    @media (max-width: 767px) {
-      max-width: 360px;
-      text-align: center;
-    }
-  }
-  form span {
-    line-height: 46px;
-    font-size: 1.1em;
-    margin: 0 0 0 -52px;
-    height: 58px;
-    padding: 12px 26px;
-    border: none;
-    background: rgba(3, 37, 65, 0.99);
-    border-radius: 30px;
-    color: rgba(255, 255, 255, 1);
-    border: 1px solid white;
-    @media (max-width: 640px) {
-      margin: 0 0 0 -32px;
-      height: 58px;
-      padding: 12px 22px;
-    }
-  }
-  *:focus {
-    outline: none;
-  }
+
   .title {
     @media (max-width: 640px) {
       font-size: 19px;
@@ -84,7 +51,7 @@ const BannerContainer = styled.div`
 `;
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
   grid-gap: 0.75rem;
   color: white;
@@ -106,7 +73,7 @@ const GridContainer = styled.div`
     border: none;
     border-radius: 0.75rem;
     transition: all 0.4s ease;
-    height: 350px;
+    min-height: 350px;
     @media (max-width: 766px) {
       height: 220px;
     }
@@ -129,6 +96,7 @@ const GridContainer = styled.div`
     border-radius: 0.75rem;
     border-bottom-left-radius: 0rem;
     border-bottom-right-radius: 0rem;
+    object-fit: contain;
   }
   div.card-body {
     padding: 0 0 1rem 0;
@@ -184,7 +152,7 @@ export default function DashBoard(props) {
 
   const fetchData = useCallback(async () => {
     try {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=search-terms&key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=christian-books&key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`;
       const response = await axios.get(url, {
         params: {
           language_code: "en",
@@ -201,8 +169,6 @@ export default function DashBoard(props) {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  // console.log(allBooks);
 
   return (
     <>
@@ -238,17 +204,9 @@ export default function DashBoard(props) {
           <span className="p-3 my-3 desc">
             Explore our Millions of books collection, Explore now.
           </span>
-          <form>
-            <div className="">
-              <div className="">
-                <input
-                  className="sm"
-                  placeholder="Search for books and Author"
-                />
-                <span className="bt-sm">search</span>
-              </div>
-            </div>
-          </form>
+          <Link to="/search">
+            <button className="btn btn-info">All Books</button>
+          </Link>
         </div>
       </BannerContainer>
       <GridContainer>
