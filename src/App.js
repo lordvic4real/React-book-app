@@ -1,4 +1,4 @@
-import {} from "react-bootstrap";
+import "react-bootstrap";
 import SignUp from "./component/signup";
 import DashBoard from "./component/dashboard";
 import Login from "./component/login";

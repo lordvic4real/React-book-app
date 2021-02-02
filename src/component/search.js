@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import BookCard from "./book";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
@@ -131,6 +130,7 @@ export default function Search(props) {
                     <img
                       src={filterBook.volumeInfo.imageLinks?.smallThumbnail}
                       className="shadow-sm "
+                      alt="image"
                     />
                   </div>
                 </Link>
@@ -145,7 +145,7 @@ export default function Search(props) {
                   <a
                     href={`${filterBook.volumeInfo?.previewLink}`}
                     target="_blank"
-                    rel="nofollow"
+                    rel="noreferrer noopener"
                   >
                     learn more
                   </a>

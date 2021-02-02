@@ -23,8 +23,6 @@ export default function BookDetail({ match }) {
         `https://www.googleapis.com/books/v1/volumes/${id}?key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`
       );
       const response = getBook?.data;
-      // console.log(getBook);
-      // console.log(response);
       const bookInfo = response.volumeInfo;
       // console.log(bookInfo);
       setBookData(bookInfo);
@@ -42,7 +40,7 @@ export default function BookDetail({ match }) {
       <DetailContainer>
         <div>
           <div>{bookData.title}</div>
-          <img src={bookData.imageLinks?.smallthumbnail} />
+          <img src={bookData.imageLinks?.smallthumbnail} alt="image" />
           <div>{bookData.description}</div>
         </div>
       </DetailContainer>

@@ -10,7 +10,7 @@ export default function UpdateProfile() {
   const { currentUser } = useAuth();
   const [error, setError] = useState(" ");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
