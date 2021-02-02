@@ -130,7 +130,7 @@ export default function Search(props) {
                     <img
                       src={filterBook.volumeInfo.imageLinks?.smallThumbnail}
                       className="shadow-sm "
-                      alt="image"
+                      alt="pix"
                     />
                   </div>
                 </Link>

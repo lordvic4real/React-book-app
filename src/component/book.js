@@ -8,10 +8,7 @@ export default function MyBook({ book }) {
         <div>
           <Link to={`/books/${book.id}`}>
             <div className="img-container">
-              <img
-                src={book.volumeInfo.imageLinks?.smallThumbnail}
-                alt="image"
-              />
+              <img src={book.volumeInfo.imageLinks?.smallThumbnail} alt="pix" />
             </div>
           </Link>
           <div className="card-body">

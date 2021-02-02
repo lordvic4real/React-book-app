@@ -40,7 +40,7 @@ export default function BookDetail({ match }) {
       <DetailContainer>
         <div>
           <div>{bookData.title}</div>
-          <img src={bookData.imageLinks?.smallthumbnail} alt="image" />
+          <img src={bookData.imageLinks?.smallthumbnail} alt="pix" />
           <div>{bookData.description}</div>
         </div>
       </DetailContainer>
