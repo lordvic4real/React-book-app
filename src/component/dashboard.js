@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../context/authcontext";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BookCard from "./book";
 import styled from "styled-components";
 import axios from "axios";
 
 const BannerContainer = styled.div`
-  height: 320px;
+  min-height: 320px;
   margin-top: 0;
-  background: linear-gradient(rgba(1, 48, 77, 0.889), rgba(1, 48, 77, 0.689));
-  background-position: center;
-  background-size: cover;
   object-fit: cover;
+  background: linear-gradient(rgba(223, 77, 33, 0.9), rgba(88, 22, 99, 0.5)),
+    url(/images/book2.jpg);
+  background-position: center center;
+  background-size: cover;
 
   .bg {
     height: 100%;
@@ -20,7 +21,7 @@ const BannerContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 0 10px 5%;
+    padding: 0 5% 10px 5%;
     color: rgba(255, 241, 207, 0.9);
     text-align: justify;
     width: 100%;
@@ -60,27 +61,21 @@ const GridContainer = styled.div`
   padding: 20px 5%;
   @media (max-width: 767px) {
     grid-template-columns: repeat(3, 1fr);
-    // text-align:center;
   }
   @media (min-width: 778px) and (max-width: 1024px) {
     grid-template-columns: repeat(5, 1fr);
-    // text-align:center;
   }
 
   div.card {
     color: black;
-    background: #fff;
-    border: none;
+    background: #fafafa;
     border-radius: 0.75rem;
     transition: all 0.4s ease;
-    min-height: 350px;
+
     @media (max-width: 766px) {
-      height: 220px;
     }
   }
   div.card:hover {
-    color: white;
-    background: linear-gradient(45deg, black, black);
     box-shadow: 1px 1px 1px 1px gray !important;
   }
   .img-container img:hover {
@@ -89,41 +84,34 @@ const GridContainer = styled.div`
   .img-container {
     width: 100%;
     display: grid;
-    place-items: center;
   }
+
   .img-container img {
-    width: 100%;
+    height: 260px;
     border-radius: 0.75rem;
     border-bottom-left-radius: 0rem;
     border-bottom-right-radius: 0rem;
     object-fit: contain;
-  }
-  div.card-body {
-    padding: 0 0 1rem 0;
-  }
-  .img-container img {
-    width: 100%;
-    height: 260px;
     @media (max-width: 767px) {
       height: 150px;
       object-fit: fit;
     }
   }
   h2.card-title {
-    margin: 1rem 0 0.3rem 0;
-    /* margin-bottom: .75rem; */
+    margin: 1rem 0 0.3rem 0.7;
     font-size: 1rem;
-    text-align: center;
+    /* text-align: center; */
     text-transform: capitalize;
     font-family: "muli";
-    /* color: black; */
     font-weight: 500;
     @media (max-width: 767px) {
       display: none;
     }
   }
+  .card-body {
+    padding: 5px;
+  }
   .card-body span {
-    display: block;
     text-align: center;
     text-transform: capitalize;
     font-size: 16px;
@@ -131,6 +119,7 @@ const GridContainer = styled.div`
       font-size: 100%;
       margin-top: 20px;
     }
+    padding: 2px 0 2px 1px;
   }
 `;
 
@@ -172,33 +161,29 @@ export default function DashBoard(props) {
 
   return (
     <>
-      <div
-        style={{
-          background: `linear-gradient(rgba(1,48,77,0.889),rgba(1,48,77,0.889))`,
-        }}
-      >
-        <div className="d-flex justify-content-between align-items-center px-2 text-light">
-          <Card.Body>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <strong>Email:</strong>
-            {currentUser && currentUser.email}
-            <Link to="/update-profile" className="btn btn-primary m-2 ">
-              Update Profile
-            </Link>
-          </Card.Body>
-          <div className="mr-3">
-            <Button
-              onClick={handleLogOut}
-              variant="link"
-              className="btn btn-outline-light"
-            >
-              Logout
-            </Button>
+      <BannerContainer>
+        <div>
+          <div className="d-flex justify-content-between align-items-center px-2 text-light">
+            <Card.Body>
+              {error && <Alert variant="danger">{error}</Alert>}
+              <strong>Email:</strong>
+              {currentUser && currentUser.email}
+              <Link to="/update-profile" className="btn btn-outline-light m-2 ">
+                Update Profile
+              </Link>
+            </Card.Body>
+            <div className="mr-3">
+              <Button
+                onClick={handleLogOut}
+                variant="link"
+                className="btn btn-outline-light"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-
-      <BannerContainer>
         <div className="bg">
           <h1 className="title">Welcome to christian books store.</h1>
           <span className="p-3 my-3 desc">

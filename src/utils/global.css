@@ -1,3 +1,4 @@
-body{
-    background: radial-gradient(ellipse at center, white 20%, #d2d2d2 100%);
-  }
+body {
+  background: radial-gradient(ellipse at center, white 20%, #d2d2d2 100%);
+  font-family: "Source Sans Pro", sans-serif;
+}

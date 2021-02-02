@@ -8,17 +8,19 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Banner = styled.div`
   height: 350px;
-  background: url(/images/book2.jpg);
-  background-position: center center;
   display: grid;
   place-items: center;
+  background: linear-gradient(rgba(223, 77, 33, 0.9), rgba(88, 22, 99, 0.5)),
+    url(/images/book2.jpg);
+  background-position: center center;
+  background-size: cover;
   input {
     width: 700px;
-    height: 46px;
+    height: 50px;
     line-height: 46px;
     font-size: 1.1em;
     color: rgba(0, 0, 0, 0.5);
-    border: none;
+    /* border: none; */
     border-radius: 30px;
     padding: 10px 20px;
     @media (max-width: 767px) {
@@ -30,8 +32,9 @@ const Banner = styled.div`
     line-height: 46px;
     font-size: 1.1em;
     margin: 0 0 0 -52px;
-    height: 58px;
-    padding: 12px 26px;
+    width: 130px;
+    /* padding: 12px; */
+    transition: all 0.3s ease;
     border: none;
     background: rgba(3, 37, 65, 0.99);
     border-radius: 30px;
@@ -64,15 +67,23 @@ const CardWrap = styled.div`
   .card-body {
     padding: 0 12px 12px 12px;
   }
+  .loading {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 export default function Search(props) {
   const [query, setQuery] = useState("");
   const [filterBooks, setFilteredBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    setHasSearched(true);
     try {
       setLoading(true);
       const apiBooks = await axios.get(
@@ -93,9 +104,9 @@ export default function Search(props) {
   return (
     <>
       <Banner>
-        <form onSubmit={handleSearch}>
-          <div className="">
-            <div className="">
+        <div className="bg">
+          <form onSubmit={handleSearch}>
+            <div>
               <input
                 className="sm"
                 placeholder="Search for books and Author"
@@ -107,8 +118,8 @@ export default function Search(props) {
                 search
               </button>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </Banner>
       <CardWrap>
         <div className="card-wrapper">
@@ -128,28 +139,36 @@ export default function Search(props) {
                   <small className="card-title">
                     {/* {filterBook.volumeInfo.subtitle} */}
                   </small>
-                  {filterBook.volumeInfo.authors.map((author) => (
+                  {filterBook?.volumeInfo?.authors?.map((author) => (
                     <span key={author}>{author}</span>
                   ))}
-                  <Link to={`${filterBook.volumeInfo?.previewLink}`}>
+                  <a
+                    href={`${filterBook.volumeInfo?.previewLink}`}
+                    target="_blank"
+                    rel="nofollow"
+                  >
                     learn more
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))
           ) : (
             <>
-              {loading ? (
-                <FontAwesomeIcon
-                  icon={faSpinner}
-                  spin
-                  color="blue"
-                  filter="blue"
-                  size="2x"
-                />
-              ) : (
-                <div>no books found</div>
-              )}
+              <div className="loading">
+                {loading ? (
+                  <FontAwesomeIcon
+                    icon={faSpinner}
+                    spin
+                    color="blue"
+                    filter="blue"
+                    size="2x"
+                  />
+                ) : hasSearched ? (
+                  "book not found"
+                ) : (
+                  "Please, search something"
+                )}
+              </div>
             </>
           )}
         </div>
