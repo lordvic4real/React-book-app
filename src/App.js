@@ -8,10 +8,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ForgotPassword from "./component/forgot-password";
 import UpdateProfile from "./component/update-profile";
 import Frontend from "./layout/frontend";
-// import style from './utils/global.css'
+import "./utils/global.css";
 import Person from "./component/person";
 import BookDetail from "./component/book-detail";
 import People from "./component/people";
+import Search from "./component/search";
 
 function App() {
   return (
@@ -31,9 +32,10 @@ function App() {
                   path="/update-profile"
                   component={UpdateProfile}
                 />
-                <Route path="/books/:id/" component={BookDetail} />
+                <Route path="/books/:id" component={BookDetail} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
+                <Route path="/search" component={Search} />
                 <Route path="/forgot-password" component={ForgotPassword} />
               </Switch>
             </AuthProvider>

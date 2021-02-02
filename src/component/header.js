@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {} from "react-bootstrap";
-// import User from "./user";
+import "react-bootstrap";
 
 const NavContainer = styled.div`
   min-height: 60px;
@@ -12,13 +11,18 @@ const NavContainer = styled.div`
   grid-template-columns: 1fr 2fr;
   place-items: center;
   padding: 0 0 0 5%;
-  border-bottom: 3px solid grey;
+  box-shadow: 0px 10px 26px 3px rgba(51, 29, 29, 0.7);
+  /* border-bottom: 3px solid grey; */
   .logo {
-    font-size: 22px;
+    font-size: 19px;
     font-family: muli;
     justify-self: start;
     border: 1px solid white;
     padding: 5px 10px;
+  }
+  .logo a {
+    color: rgba(255, 241, 207, 0.9);
+    text-decoration: none;
   }
 
   .link a {
@@ -39,8 +43,8 @@ export default function Header(props) {
         </div>
         <nav className="link">
           <Link to="/">Home</Link>
-          <Link to="/people">People</Link>
-          <Link to="/">Services</Link>
+          <Link to="/search">All books</Link>
+          {/* <Link to="/">Services</Link> */}
         </nav>
       </NavContainer>
     </>

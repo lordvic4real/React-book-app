@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Books } from "../data/books";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -14,32 +13,38 @@ const DetailContainer = styled.div`
 `;
 
 export default function BookDetail({ match }) {
-  const [filterbooks, setFilterBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const {
-    params: { personId },
-  } = match;
+  const { id } = useParams();
+
+  const [bookData, setBookData] = useState({});
+
+  const getSingleBook = async () => {
+    try {
+      const getBook = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes/${id}?key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`
+      );
+      const response = getBook?.data;
+      // console.log(getBook);
+      // console.log(response);
+      const bookInfo = response.volumeInfo;
+      // console.log(bookInfo);
+      setBookData(bookInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const BookDetail = Books.filter((book) => book);
-    setFilterBooks(BookDetail);
+    getSingleBook();
   }, []);
-
-  // function getBooks(id) {
-  //   const bookDetails = Books.filter((book) => book === id);
-
-  //   if (getBooks && getBooks.length > 0) {
-  //     setFilterBooks(bookDetails[0]);
-  //   }
-  // }
 
   return (
     <>
       <DetailContainer>
-        <p>
-          {/* Your name is <strong>{book.image}</strong>
-          Your name is <strong>{book.title}</strong> */}
-        </p>
+        <div>
+          <div>{bookData.title}</div>
+          <img src={bookData.imageLinks?.smallthumbnail} />
+          <div>{bookData.description}</div>
+        </div>
       </DetailContainer>
     </>
   );
