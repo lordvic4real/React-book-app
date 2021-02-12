@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -17,7 +17,20 @@ export default function BookDetail({ match }) {
 
   const [bookData, setBookData] = useState({});
 
-  const getSingleBook = async () => {
+  // const getSingleBook = async () => {
+  //   try {
+  //     const getBook = await axios.get(
+  //       `https://www.googleapis.com/books/v1/volumes/${id}?key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`
+  //     );
+  //     const response = getBook?.data;
+  //     const bookInfo = response.volumeInfo;
+  //     // console.log(bookInfo);
+  //     setBookData(bookInfo);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const getSingleBook = useCallback(async () => {
     try {
       const getBook = await axios.get(
         `https://www.googleapis.com/books/v1/volumes/${id}?key=${process.env.REACT_APP_GOOGLE_BOOKS_API_KEY}`
@@ -29,11 +42,11 @@ export default function BookDetail({ match }) {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     getSingleBook();
-  }, []);
+  }, [getSingleBook]);
 
   return (
     <>
